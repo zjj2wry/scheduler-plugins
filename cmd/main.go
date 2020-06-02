@@ -25,6 +25,7 @@ import (
 
 	"sigs.k8s.io/scheduler-plugins/pkg/coscheduling"
 	"sigs.k8s.io/scheduler-plugins/pkg/qos"
+	"sigs.k8s.io/scheduler-plugins/pkg/stateful"
 )
 
 func main() {
@@ -35,6 +36,7 @@ func main() {
 	command := app.NewSchedulerCommand(
 		app.WithPlugin(coscheduling.Name, coscheduling.New),
 		app.WithPlugin(qos.Name, qos.New),
+		app.WithPlugin(stateful.Name, stateful.New),
 	)
 	if err := command.Execute(); err != nil {
 		os.Exit(1)
